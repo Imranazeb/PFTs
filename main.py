@@ -13,7 +13,7 @@ with open('results/log.txt', 'w') as file:
 
     for index, eachPFT in enumerate(pfts_toread):
         result = read_pft(filename=eachPFT)
-        file.write(f'Number {index}: INTERPRETATION: {result}\n\n')
+        file.write(f'Number {index}: INTERPRETATION: {result}\n{spacer}')
         print(f'Writing record {index + 1} of {len(pfts_toread)}')
 
 file.close()
