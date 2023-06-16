@@ -25,8 +25,11 @@ def canProceed(param):
 def read_pft(filename):
 
     pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
-
-    img = cv2.imread(filename)
+    try:
+        img = cv2.imread(filename)
+    except:
+        print('Error reading data from source file')
+        exit()
 
     text_in_img = pytesseract.image_to_string(img)
 
@@ -42,10 +45,6 @@ def read_pft(filename):
             start_index = None
 
     canProceed(start_index)
-
-    # if start_index is None:
-    #     print('Error reading file')
-    #     exit()
 
     FEV1percent = float(pft_data[start_index + 2].split()[-4])
     FEV1L = float(pft_data[start_index + 2].split()[-6])

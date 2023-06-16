@@ -9,6 +9,10 @@ cls = system('cls')
 start_time = time.time()
 
 pfts_toread = glob.glob('data/sample_PFT*')
+if pfts_toread == []:
+    print('No PFTs found in data folder')
+    exit()
+
 with open('results/log.txt', 'w') as file:
 
     for index, eachPFT in enumerate(pfts_toread):
