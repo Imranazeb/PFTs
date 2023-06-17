@@ -1,19 +1,23 @@
-from os import system
+from os import system, path
 import glob
 import time
 from calculations import *
 
-
 cls = system('cls')
+
+cwd = path.dirname(__file__)
+datafolder = path.join(cwd, 'data')
+resultsfolder = path.join(cwd, 'results')
 
 start_time = time.time()
 
-pfts_toread = glob.glob('data/sample_PFT*')
+pfts_toread = glob.glob(f'{datafolder}/*')
+
 if pfts_toread == []:
     print('No PFTs found in data folder')
     exit()
 
-with open('results/log.txt', 'w') as file:
+with open(f'{resultsfolder}/log.txt', 'w') as file:
 
     for index, eachPFT in enumerate(pfts_toread):
         result = read_pft(filename=eachPFT)
